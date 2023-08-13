@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+
+    <script src="{% static 'js/jquery.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <style>
+       body{background-image:url( "{% static 'img/back.jpg'%}");
+       background-size: 100%;
+       }
+       h2{border-style: outset;color:white;}
+       h3{color:white;}
+       label{color: black;text-align: left;}
+       
+      
+      
+       
+    </style>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/home">Milk Store</a>
+      </div>
+      <ul class="nav navbar-nav">
+        
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">vender <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/addvender">addvender</a></li>
+            <li><a href="venderdetails">venderdetails</a></li>
+            <li><a href="/updatebutton">venderupdate</a></li>
+            <li><a href="/delete">venderdelete</a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Bill<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/billid">GenerateBill</a></li>
+            <li><a href="/billreport">BillReport</a></li>
+            <li><a href="/vendorwise">Billserch</a></li>
+          </ul>
+      
+      </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+        <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </nav>
+    <div class="container">
+      <center>
+      <form action="/addvender" class="form-horizontal"  method="post" >
+        {% csrf_token %}
+        <div class="form-header">
+        <h3  style="font-family: initial;"><b>Add Vender:</b></h3>
+        </div>
+        <hr>
+        <br>
+        <!--vender name-->
+        <div class="form-group" >
+          <label class="col-sm-offset-3 col-sm-3"  for="vendar">vendar name:</label>
+          <input class="col-sm-6" type="text" name="vendar" id="vn1"  placeholder="enter vendarname">
+         </div>
+         <!--fathername-->
+         <div class="form-group">
+          <label class="col-sm-offset-3 col-sm-3" for="fathername">father name:</label>
+          <input class="col-sm-6" type="text" name="father" id="vn2" placeholder="enter father name">
+        </div>
+
+        <!--mobile-->
+
+        <div class="form-group">
+          <label class="col-sm-offset-3 col-sm-3" for="mobile">mobile number:</label>
+          <input class="col-sm-6" type="number" name="mobile" id="vn3" placeholder="enter number">
+        </div>
+
+        <!--address-->
+
+        <div class="form-group">
+          <label class="col-sm-offset-3 col-sm-3" for="add">address:</label>
+          <input class="col-sm-6" type="text" name="area" id="vn4" placeholder="address">
+
+        </div>
+        <div class="form-group">
+          <label class="col-sm-offset-3 col-sm-3" for="join">join date:</label>
+          <input class="col-sm-6" type="date" name="join" id="vn5">
+        </div>
+        <div class="form-group ">
+        <button  type="reset" class="btn btn-danger col-sm-offset-6 col-sm-3">clear</button>
+        <button  type="submit" class="btn btn-success col-sm-3">submit</button>
+      </div>
+    </center>
+        
+
+      </form>
+    </div>
+  </body>
+</html>

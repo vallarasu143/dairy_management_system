@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+
+    <script src="{% static 'js/jquery.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <style>
+    
+       table,th,td{border: 1px solid black;text-align: center;background-color: aliceblue;}
+       h2{font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color:black;}
+    body{background-image: url("{% static 'img/back.jpg'%}");}
+    h4{color: black;}
+    p{font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;}
+       
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/home"><p style="color: white;">Milk Store</p></a>
+          </div>
+          <ul class="nav navbar-nav">
+            
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">vender <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/addvender">addvender</a></li>
+                <li><a href="venderdetails">venderdetails</a></li>
+                <li><a href="/updatebutton">venderupdate</a></li>
+                <li><a href="/delete">venderdelete</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Bill<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/billid">GenerateBill</a></li>
+                <li><a href="/billreport">BillReport</a></li>
+                <li><a href="/vendorwise">Billserch</a></li>
+              </ul>
+          
+          </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            
+            <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="container ">
+        <form action="/vendorwise" method="post">
+            {% csrf_token %}
+            <input type="number" style="padding: 5px;" placeholder="enter id" name="getid">
+            <button class="btn btn-primary">submit</button>
+            <a href="/vendorbill/{{data}}" class="btn btn-success">filter</a>
+        </form>
+      </div>
+    <div class="container-fluid">
+       <center><h2><b><ins>BIll REPORT</ins></b></h2>
+       
+       <hr> 
+       <table style="width: 100%;">
+        <tr>
+            
+            <th><h4>DATE</h4></th>
+            <th><h4>VENDER NAME</h4></th>
+            <th><h4>LITRE</h4></th>
+            <th><h4>RATE</h4></th>
+            
+        </tr>
+        <tr>
+            {% for value in details %}
+              
+            <td><h6>{{value.date}}</h6></td>
+            <td><h6>{{value.name}}</h6></td>
+            <td><h6>{{value.litre}}</h6></td>
+            <td><h6>{{value.rate}}</h6></td>
+        </tr>
+        {% endfor %}
+       </table>
+       </center>
+
+    
+    
+    </div>
+    
+  </body>
+</html>

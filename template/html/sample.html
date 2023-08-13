@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+
+    <script src="{% static 'js/jquery.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <style>
+       body{background-image:url( "{% static 'img/back.jpg'%}");
+       background-size: 100%;
+       }
+       h2{border-style: outset;color:white;}
+       h3{color:white;}
+       label{size:20px;color:black;text-align: right;}
+       .form-group{padding-top: 20px;}
+      
+      
+       
+    </style>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/home">Milk Store</a>
+      </div>
+      <ul class="nav navbar-nav">
+        
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">vender <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/addvender">addvender</a></li>
+            <li><a href="venderdetails">venderdetails</a></li>
+            <li><a href="/updatebutton">venderupdate</a></li>
+            <li><a href="/delete">venderdelete</a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Bill<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/billid">GenerateBill</a></li>
+            <li><a href="/billreport">BillReport</a></li>
+            <li><a href="/vendorwise">Billserch</a></li>
+          </ul>
+      
+      </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+        <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </nav>
+    <div class="container">
+      <form action='/update/{{name.id}}'  method="post" >
+        {% csrf_token %}
+        
+        <div class="form-header">
+        <h3>change your vender deatails:</h3>
+        </div>
+        <!--vender name-->
+        <div class="form-group" >
+          <label class="col-sm-3"  for="vendar">vendar name:</label>
+          <input class="col-sm-3" type="text" name="vendar" id="vn1" value="{{ name.name }}">
+         </div>
+         <!--fathername-->
+         <div class="form-group">
+          <label class="col-sm-3" for="fathername">father name:</label>
+          <input class="col-sm-3" type="text" name="father" id="vn2" value="{{ name.fathername }}">
+        </div>
+
+        <!--mobile-->
+
+        <div class="form-group">
+          <label class="col-sm-3" for="mobile">mobile number:</label>
+          <input class="col-sm-3" type="number" name="mobile" id="vn3" value="{{ name.number }}">
+        </div>
+
+        <!--address-->
+
+        <div class="form-group">
+          <label class="col-sm-3" for="add">address:</label>
+          <input class="col-sm-3" type="text" name="area" id="vn4" placeholder="address" value="{{ name.address }}">
+
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3" for="join">join date:</label>
+          <input class="col-sm-3" type="date" name="join" id="vn5" value="{{name.join}}">
+        </div>
+        <div class="form-group">
+        <button type="reset" class="btn btn-danger  col-sm-offset-4 col-sm-1 ">clear</button>
+        <button type="submit" class="btn btn-success">change</button>
+      </div>
+      
+        
+
+      </form>
+    </div>
+  </body>
+</html>
